@@ -12,6 +12,7 @@ function App() {
 
   const [num, setNum] = useState(0);
   const [userData, setUserData] = useState([]);
+  const [msg, setMsg] = useState('Check your cart!');
 
 
   const getData = async () => {
@@ -19,6 +20,7 @@ function App() {
       const dummyRequest = await axios.get('https://jsonplaceholder.typicode.com/todos');
       const response = dummyRequest.data
       setUserData(response);
+
     }
     catch (err) {console.log(err)}
   }
@@ -26,6 +28,11 @@ function App() {
   const handleIncrement = () => {
         console.log('works from app component');
     }
+
+  const handleDelete = id => {
+    const newArrOfItems = userData.filter(item => item.id !== id);
+    setUserData(newArrOfItems);
+  }
 
   return (
     <div className="App">
@@ -36,10 +43,15 @@ function App() {
             onIncrement={handleIncrement}
             onValue={num}
             onGet={getData}
+            onMsg={msg}
+            onData={userData}
             />
         </Route>
         <Route path='/cart'>
-          <Cart onData={userData}/>
+          <Cart 
+            onData={userData}
+            onDelete={handleDelete}
+            />
         </Route>
       </Switch>
     </div>
