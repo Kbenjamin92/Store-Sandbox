@@ -11,45 +11,51 @@ import { Switch, Route } from 'react-router-dom';
 function App() {
 
   const [num, setNum] = useState(0);
-  const [userData, setUserData] = useState([]);
+  const [itemData, setItemData] = useState([]);
+  const [cartData, setCartData] = useState([]);
   const [msg, setMsg] = useState('Check your cart!');
 
 
   const getData = async () => {
     try {
-      const dummyRequest = await axios.get('https://jsonplaceholder.typicode.com/todos');
+      const dummyRequest = await axios.get('https://fakestoreapi.com/products');
       const response = dummyRequest.data
-      setUserData(response);
+      console.log(response);
+      setItemData(response);
 
     }
     catch (err) {console.log(err)}
   }
 
-  const handleIncrement = () => {
-        console.log('works from app component');
-    }
-
   const handleDelete = id => {
-    const newArrOfItems = userData.filter(item => item.id !== id);
-    setUserData(newArrOfItems);
+    const newArrOfItems = cartData.filter(item => item.id !== id);
+    setItemData(newArrOfItems);
+  }
+
+  const handleAddItem = id => {
+    const getItem = itemData.find(item => item.id === id);
+    let cartCollection = [getItem];
+    const cartCollectionClone = [...cartCollection]
+    console.log(cartCollectionClone);
+    setCartData(cartCollectionClone);
+    
   }
 
   return (
     <div className="App">
-      <Nav />
+      <Nav onTotal={cartData}/>
       <Switch>
         <Route exact path='/'>
           <Home 
-            onIncrement={handleIncrement}
-            onValue={num}
             onGet={getData}
             onMsg={msg}
-            onData={userData}
+            onData={itemData}
+            onAdd={handleAddItem}
             />
         </Route>
         <Route path='/cart'>
           <Cart 
-            onData={userData}
+            onAddToCart={cartData}
             onDelete={handleDelete}
             />
         </Route>
