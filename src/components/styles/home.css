@@ -1,0 +1,19 @@
+.item-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card {
+    /* margin: 70px 60% 40px 40px; */
+    padding: 20px;
+}
+.card-img-top {
+    width: 200px;
+    height: 200px;
+}
+.card-title {
+    text-align: start;
+}
+.card-text {
+    text-align: start;
+}

@@ -2,22 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 export default function Nav({ onTotal }) {
-   const total = onTotal.length;
-   const renderTotal = total ? total : null
+    const total = onTotal.length;
+    const renderTotal = total ? total : null
+
     return (
         <nav className="navbar navbar-light bg-light">
-            <h1 className="navbar-brand">Store</h1>
-            <div className='navbar'>
-                <ul className='navbar nav'>
-                    <li className='nav-item'>
-                        <Link className='nav-link' to='/'><p>Home</p></Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link to='/cart'><p>Cart<span className='badge badge-primary'>{renderTotal}</span></p></Link>
-                    </li>
-                </ul>
-            </div>
-           
+            <h1 className="navbar-brand">Clothes & Stuff</h1>
+            <ul className="nav justify-content-center">
+                <li className="nav-item breadcrumb-item">
+                    <Link to='/'><button className="nav-link btn" style={{marginRight: '20px'}} href="#">Store</button></Link>
+                </li>
+                <li className="nav-item">
+                    <Link to='/cart'><button className="nav-link btn" href="#">Cart<span className='badge badge-primary' style={{ marginLeft: '5px'}}>{renderTotal}</span></button></Link>
+                </li>
+            </ul>
         </nav>
     )
 }
