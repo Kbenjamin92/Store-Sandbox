@@ -14,7 +14,7 @@ export default function Store({ onGet, onAddToCart, onData, onAdd}) {
             {
                 onAddToCart.length !== 0 ?
                 <>
-                    <h1 className='badge badge-success'>Check your cart!</h1>
+                    <h3><span className='badge badge-success'>Check your cart!</span></h3>
                 </>
                 :
                 null

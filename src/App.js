@@ -13,6 +13,8 @@ function App() {
 
   const [itemData, setItemData] = useState([]);
   const [cartData, setCartData] = useState([]);
+  const [collectItemPrice, setCollectItemPrice] = useState([]);
+  const [totalItemPrice, setTotalItemPrice] = useState(0);
 
 
   const getData = async () => {
@@ -25,17 +27,19 @@ function App() {
     catch (err) {console.log(err)}
   }
 
-  const handleDelete = id => {
+  const handleDelete = (id, price) => {
     const newArrOfItems = cartData.filter(item => item.id !== id);
+    const removeItemPrice = cartData.filter(item => item.price === price);
+    setCollectItemPrice(removeItemPrice);
     setCartData(newArrOfItems);
   }
 
   const handleAddItem = id => {
     const getItem = itemData.find(item => item.id === id);
+    setCollectItemPrice(prevState => [...prevState, getItem.price]);
     setCartData(prevState => [...prevState, getItem]);
   }
 
-  console.log(cartData);
   return (
     <div className="App">
       <Nav onTotal={cartData}/>
@@ -52,6 +56,7 @@ function App() {
           <Cart 
             onAddToCart={cartData}
             onDelete={handleDelete}
+            onTotalPrice={collectItemPrice}
             />
         </Route>
       </Switch>

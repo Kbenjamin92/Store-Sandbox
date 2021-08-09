@@ -1,16 +1,33 @@
 import React from 'react'
 
-export default function Cart({ onAddToCart, onDelete }) {
+export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
+
+    // figure out logic for the total price of the items in the cart 
+    // also figure out the logic to reduce the total as the user deletes items from their cart.
+
+    // const sum = onTotalPrice.reduce((accumulator, element) => {
+    //     return accumulator + element;
+    //  }, 0);
+
+    //  console.log(sum);
+
+    // const reducePrice = onTotalPrice.reduce((accumulator, element) => {
+    //     return accumulator - element;
+    // }, 0);
+    // console.log(reducePrice);
+
     return (
         <div>
             <h1>Cart</h1>
             {
                  onAddToCart.length === 0 ?
                  <>
-                     <h1 className='badge badge-danger badge-lg'>No items in the cart yet!</h1>
+                     <h3><span className="badge badge-danger">No items in the cart yet!</span></h3>
                  </>
                  :
-                 null
+                <>
+                    <h2><span className="badge badge-success">Total: $place holder</span></h2>
+                </>
             }
             {
                 onAddToCart.map((item, key) => {
