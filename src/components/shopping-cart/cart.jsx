@@ -7,7 +7,7 @@ export default function Cart({ onAddToCart, onDelete }) {
             {
                  onAddToCart.length === 0 ?
                  <>
-                     <h1 className='badge badge-danger'>No items in the cart yet!</h1>
+                     <h1 className='badge badge-danger badge-lg'>No items in the cart yet!</h1>
                  </>
                  :
                  null
@@ -16,13 +16,19 @@ export default function Cart({ onAddToCart, onDelete }) {
                 onAddToCart.map((item, key) => {
 
                     return (
-                        <div key={key}>
-                            <p>{item.title}</p>
-                            <p>{item.description}</p>
-                            <p>${item.price}</p>
-                            <img src={item.image} alt="item" style={{width: '200px', height: '200px'}} />
-                            <button className='btn btn-danger btn-sm' onClick={() => onDelete(item.id)}>Remove</button>
+                        <div key={key} className="card-container">
+                            <div className="card" style={{width: "18rem"}}>
+                            <img className="card-img-top" src={item.image} alt="item" />
+                            <div className="card-body">
+                                <h4 className="card-title">{item.title}</h4>
+                                <hr/>
+                                <p className="card-text">{item.description}</p>
+                                <p className="card-text"><strong>Price:</strong> ${item.price}</p>
+                                <button className='btn btn-danger btn-sm' onClick={() => onDelete(item.id)}>Remove</button>
+                            </div>
                         </div>
+                        </div>
+                        
                     ); 
                 })
             }
