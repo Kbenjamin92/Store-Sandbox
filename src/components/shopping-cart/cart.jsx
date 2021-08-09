@@ -3,7 +3,7 @@ import React from 'react'
 export default function Cart({ onAddToCart, onDelete }) {
     return (
         <div>
-            <h1>Cart Component</h1>
+            <h1>Cart</h1>
             {
                  onAddToCart.length === 0 ?
                  <>

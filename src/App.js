@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'font-awesome/css/font-awesome.min.css';
 import Nav from './components/nav/nav';
-import Home from './components/home/home';
+import Store from './components/store/store';
 import Cart from './components/shopping-cart/cart';
 import axios from 'axios';
 import { Switch, Route } from 'react-router-dom';
@@ -41,7 +41,7 @@ function App() {
       <Nav onTotal={cartData}/>
       <Switch>
         <Route exact path='/'>
-          <Home 
+          <Store 
             onGet={getData}
             onData={itemData}
             onAdd={handleAddItem}

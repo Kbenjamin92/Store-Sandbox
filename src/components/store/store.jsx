@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import '../styles/home.css'
+import '../styles/store.css'
 
 
-export default function Home({ onGet, onAddToCart, onData, onAdd}) {
+export default function Store({ onGet, onAddToCart, onData, onAdd}) {
     useEffect(() => {
         console.log('data in state');
     }, [onData]);
 
         return (
         <div>
-            <h1>Shopping Store</h1>
+            <h1>Store</h1>
             <button className='btn btn-warning' onClick={() => onGet()}>Get Data</button>
             {
                 onAddToCart.length !== 0 ?
