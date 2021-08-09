@@ -14,8 +14,6 @@ function App() {
   const [itemData, setItemData] = useState([]);
   const [cartData, setCartData] = useState([]);
   const [collectItemPrice, setCollectItemPrice] = useState([]);
-  const [totalItemPrice, setTotalItemPrice] = useState(0);
-
 
   const getData = async () => {
     try {
@@ -27,16 +25,20 @@ function App() {
     catch (err) {console.log(err)}
   }
 
-  const handleDelete = (id, price) => {
+  const handleDelete = id => {
     const newArrOfItems = cartData.filter(item => item.id !== id);
-    const removeItemPrice = cartData.filter(item => item.price === price);
+    const removeItemPrice = collectItemPrice.filter(item => item.id !== id);
     setCollectItemPrice(removeItemPrice);
     setCartData(newArrOfItems);
   }
 
   const handleAddItem = id => {
     const getItem = itemData.find(item => item.id === id);
-    setCollectItemPrice(prevState => [...prevState, getItem.price]);
+    const priceObj = {
+      id: getItem.id,
+      price: getItem.price,
+    }
+    setCollectItemPrice(prevState => [...prevState, priceObj]);
     setCartData(prevState => [...prevState, getItem]);
   }
 

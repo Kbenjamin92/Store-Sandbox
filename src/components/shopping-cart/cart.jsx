@@ -2,19 +2,14 @@ import React from 'react'
 
 export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
 
-    // figure out logic for the total price of the items in the cart 
-    // also figure out the logic to reduce the total as the user deletes items from their cart.
+    const arr = [];
 
-    // const sum = onTotalPrice.reduce((accumulator, element) => {
-    //     return accumulator + element;
-    //  }, 0);
-
-    //  console.log(sum);
-
-    // const reducePrice = onTotalPrice.reduce((accumulator, element) => {
-    //     return accumulator - element;
-    // }, 0);
-    // console.log(reducePrice);
+    for (let item of onTotalPrice) {
+         arr.push(item.price);
+    }
+    const sum = arr.reduce((accumulator, element) => {
+        return accumulator + element;
+    }, 0);
 
     return (
         <div>
@@ -26,7 +21,7 @@ export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
                  </>
                  :
                 <>
-                    <h2><span className="badge badge-success">Total: $place holder</span></h2>
+                    <h2><span className="badge badge-light">Total: ${sum.toFixed(2)}</span></h2>
                 </>
             }
             {
