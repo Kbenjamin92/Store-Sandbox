@@ -3,14 +3,15 @@ import '../styles/store.css'
 
 
 export default function Store({ onGet, onAddToCart, onData, onAdd}) {
+    const dataLength = onData.length === 0 ? false : true;
+
     useEffect(() => {
-        console.log('data in state');
-    }, [onData]);
+        onGet();
+    }, [dataLength]);
 
         return (
         <div>
             <h1>Store</h1>
-            <button className='btn btn-warning' onClick={() => onGet()}>Get Data</button>
             {
                 onAddToCart.length !== 0 ?
                 <>
