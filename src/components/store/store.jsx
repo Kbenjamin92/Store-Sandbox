@@ -19,11 +19,12 @@ export default function Store({ onGet, onAddToCart, onData, onAdd}) {
                 :
                 null
             }
+            <section className="card-container">
             {
             onData.map((item, key) => {
                 const selectedItem = onAddToCart.find(s => s.id === item.id)
                 return (
-                    <div key={key} className="card-container">
+                    <div key={key} >
                         <div className="card" style={{width: "18rem"}}>
                             <img className="card-img-top" src={item.image} alt="item" />
                             <div className="card-body">
@@ -49,6 +50,8 @@ export default function Store({ onGet, onAddToCart, onData, onAdd}) {
                 ); 
             })
             }
+
+            </section>
         </div>
     )
 }

@@ -17,8 +17,8 @@ function App() {
 
   const getData = async () => {
     try {
-      const dummyRequest = await axios.get('https://fakestoreapi.com/products');
-      const response = dummyRequest.data
+      const storeItemsRequest = await axios.get('https://fakestoreapi.com/products');
+      const response = storeItemsRequest.data
       setItemData(response);
 
     }

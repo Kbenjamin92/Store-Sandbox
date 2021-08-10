@@ -2,12 +2,12 @@ import React from 'react'
 
 export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
 
-    const arr = [];
+    const priceArr = [];
 
     for (let item of onTotalPrice) {
-         arr.push(item.price);
+         priceArr.push(item.price);
     }
-    const sum = arr.reduce((accumulator, element) => {
+    const sum = priceArr.reduce((accumulator, element) => {
         return accumulator + element;
     }, 0);
 
@@ -24,6 +24,7 @@ export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
                     <h2><span className="badge badge-light">Total: ${sum.toFixed(2)}</span></h2>
                 </>
             }
+            <section className="card-container">
             {
                 onAddToCart.map((item, key) => {
 
@@ -44,6 +45,7 @@ export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
                     ); 
                 })
             }
+            </section>
         </div>
     )
 }
