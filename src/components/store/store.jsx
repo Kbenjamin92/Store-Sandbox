@@ -4,7 +4,7 @@ import '../styles/store.css'
 
 export default function Store({ onGet, onAddToCart, onData, onAdd }) {
     const dataLength = onData.length === 0 ? false : true;
-    console.log('test2');
+    
     useEffect(() => {
         onGet();
     }, [dataLength]);
