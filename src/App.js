@@ -61,6 +61,7 @@ function App() {
             onTotalPrice={collectItemPrice}
             />
         </Route>
+        
       </Switch>
     </div>
   );

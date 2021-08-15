@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import '../styles/store.css'
 
 
-export default function Store({ onGet, onAddToCart, onData, onAdd}) {
+export default function Store({ onGet, onAddToCart, onData, onAdd }) {
     const dataLength = onData.length === 0 ? false : true;
 
     useEffect(() => {
@@ -12,14 +12,7 @@ export default function Store({ onGet, onAddToCart, onData, onAdd}) {
         return (
         <div>
             <h1>Store</h1>
-            {
-                onAddToCart.length !== 0 ?
-                <>
-                    <h3><span className='badge badge-secondary'>Check your cart!</span></h3>
-                </>
-                :
-                null
-            }
+            { onAddToCart.length !== 0 && <h3><span className='badge badge-secondary'>Check your cart!</span></h3> }
             <section className="card-container">
             {
             onData.map((item, key) => {
@@ -36,11 +29,11 @@ export default function Store({ onGet, onAddToCart, onData, onAdd}) {
                                 {
                                 item === selectedItem ?
                                 <>
-                                    <h5 className="badge badge-success icon"><i className="fa fa-check fa-3x"></i></h5>
+                                <h5 className="badge badge-success icon"><i className="fa fa-check fa-3x"></i></h5>
                                 </>
                                 :
                                 <>
-                                    <button className='btn btn-success btn-sm' onClick={() => onAdd(item.id)}>Add Item</button>
+                                <button className='btn btn-success btn-sm' onClick={() => onAdd(item.id)}>Add Item</button>
                                 </>
             
                                 }
@@ -53,6 +46,7 @@ export default function Store({ onGet, onAddToCart, onData, onAdd}) {
             }
 
             </section>
+           
         </div>
     )
 }

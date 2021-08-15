@@ -40,8 +40,7 @@ export default function Cart({ onTotalPrice, onAddToCart, onDelete }) {
                                 <button className='btn btn-danger btn-sm' onClick={() => onDelete(item.id)}>Remove</button>
                             </div>
                         </div>
-                        </div>
-                        
+                        </div> 
                     ); 
                 })
             }
